@@ -4,7 +4,8 @@ shell:
 		@$(MANAGE) shell_plus --ipython
 .PHONY: migrate
 migrate:
-		@$(MANAGE) migrate
+		@$(MANAGE) makemigrations task_manager
+		@$(MANAGE) migrate		
 .PHONY: install
 install:
 		@poetry install
