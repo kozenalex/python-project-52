@@ -1,17 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">        
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">            
-            <a class="nav-link" href="#">Вход</a>
-          </li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="#">Регистрация</a>
-          <li>
-          
-          <li class="nav-item">
-            <a class="nav-link" href="#">Пользователи</a>
-          </li>
-        </ul>
-    </div>
-</nav>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <a class="my-0 mr-md-auto font-weight-normal" href="{% url 'index_page' %}">
+        <h5 >Task Manager</h5>
+    </a>
+    <nav class="my-2 my-md-0 mr-md-3">
+      <a class="p-2 text-dark" href="#">Пользователи</a>
+      <a class="p-2 text-dark" href="#">Регистрация</a>
+    </nav>
+    <a class="btn btn-outline-primary" href="#">Вход</a>
+</div>
+
