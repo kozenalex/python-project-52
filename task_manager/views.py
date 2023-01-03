@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views import View
 from django.utils.translation import gettext as _
+from django.contrib.auth.views import LoginView
 from task_manager.models import User
+
 
 
 class IndexPageView(View):
@@ -22,3 +24,8 @@ class UsersListView(View):
             'users.html',
             context={ 'users': users } 
         )
+
+
+class UserAuthView(LoginView):
+
+    template_name = 'login.html'
