@@ -1,1 +1,1 @@
-web: manage.py migrate && gunicorn task_manager.wsgi
+web: poetry run python3 manage.py migrate && gunicorn task_manager.wsgi
