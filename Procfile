@@ -1,1 +1,1 @@
-web: pyhton3 manage.py migrate && gunicorn task_manager.wsgi
+web: make migrate && gunicorn task_manager.wsgi
