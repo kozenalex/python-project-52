@@ -145,3 +145,5 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = 'index_page' # URL redirecting after a successful authentication
+
+CSRF_TRUSTED_ORIGINS=["https://python-project-52-production-ba0b.up.railway.app"]
