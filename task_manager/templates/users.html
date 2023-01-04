@@ -16,9 +16,9 @@
     {% for user in users %}  
     <tr>
       <td>{{ user.id }}</td>
-      <td>{{ user.login }}</td>
-      <td>{{ user.full_name }}</td>
-      <td>{{ user.created_at }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.get_full_name }}</td>
+      <td>{{ user.date_joined }}</td>
       <td>
         <a href="/users/2/update/">Изменить</a>
         <br>

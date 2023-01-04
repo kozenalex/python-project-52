@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.IndexPageView.as_view(), name='index_page'),
     path('login/', views.UserAuthView.as_view(), name='login'),
+    path('users/create/', views.UserCreateView.as_view(), name='user_create'),
     path('users/', views.UsersListView.as_view(), name='users_list')
 ]

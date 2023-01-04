@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% load bootstrap4 %}
+{% block content %}
+<h1 class="my-4">Регистрация</h1>
+<form action="{% url 'user_create' %}" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button type="submit" class="btn btn-primary">
+        Register
+      </button>
+    {% endbuttons %}
+  </form>
+{% endblock %}

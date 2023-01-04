@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class User(models.Model):
-    login = models.CharField(max_length=255)
-    full_name = models.CharField(max_length=255)
-    created_at = models.DateTimeField(auto_now_add=True)
+
+class MyUser(User):
+
+    def __str__(self):
+        return self.get_full_name()
