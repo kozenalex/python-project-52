@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% load bootstrap4 %}
 {% block content %}
-<h1 class="my-4">Удаление пользователя</h1>
+<h1 class="my-4">Удаление пользователя {{user.username}}</h1>
 <form action="{% url 'user_delete' pk=user.id %}" method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
