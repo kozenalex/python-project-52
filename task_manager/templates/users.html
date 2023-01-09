@@ -1,14 +1,15 @@
 {% extends 'layout.html' %}
 {% block content %}
+{% load i18n %}
 <div class="container wrapper flex-grow-1">
     <h1 class="my-4">Пользователи</h1>    
 <table class="table table-striped">
 <thead>
   <tr>
     <th>ID</th>
-    <th>Имя пользователя</th>
-    <th>Полное имя</th>
-    <th>Дата создания</th>
+    <th>{% trans 'Username' %}</th>
+    <th>{% trans 'Full name' %}</th>
+    <th>{% trans 'Created at' %}</th>
     <th></th>
   </tr>
 </thead>
@@ -21,9 +22,9 @@
       <td>{{ u.date_joined }}</td>
       {% if user.is_authenticated and u.username == user.username or user.is_staff %}
       <td>
-        <a href="{% url 'user_update' pk=u.id %}">Изменить</a>
+        <a href="{% url 'user_update' pk=u.id %}">{% trans 'Update' %}</a>
         <br>
-        <a href="{% url 'user_delete' pk=u.id %}">Удалить</a>
+        <a href="{% url 'user_delete' pk=u.id %}">{% trans 'Delete' %}</a>
       </td>
       {% else %}
       <td></td>
