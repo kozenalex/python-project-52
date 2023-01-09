@@ -20,9 +20,9 @@
       <td>{{ user.get_full_name }}</td>
       <td>{{ user.date_joined }}</td>
       <td>
-        <a href="/users/2/update/">Изменить</a>
+        <a href="{% url 'user_update' pk=user.id %}">Изменить</a>
         <br>
-        <a href="/users/2/delete/">Удалить</a>
+        <a href="{% url 'user_delete' pk=user.id %}">Удалить</a>
       </td>
     </tr>
     {% endfor %}
