@@ -13,17 +13,21 @@
   </tr>
 </thead>
 <tbody>
-    {% for user in users %}  
+    {% for u in users_list %}  
     <tr>
-      <td>{{ user.id }}</td>
-      <td>{{ user.username }}</td>
-      <td>{{ user.get_full_name }}</td>
-      <td>{{ user.date_joined }}</td>
+      <td>{{ u.id }}</td>
+      <td>{{ u.username }}</td>
+      <td>{{ u }}</td>
+      <td>{{ u.date_joined }}</td>
+      {% if user.is_authenticated and u.username == user.username %}
       <td>
-        <a href="{% url 'user_update' pk=user.id %}">Изменить</a>
+        <a href="{% url 'user_update' pk=u.id %}">Изменить</a>
         <br>
-        <a href="{% url 'user_delete' pk=user.id %}">Удалить</a>
+        <a href="{% url 'user_delete' pk=u.id %}">Удалить</a>
       </td>
+      {% else %}
+      <td></td>
+      {% endif %}
     </tr>
     {% endfor %}
 </tbody>

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
+from django.views.generic.list import ListView
 from django.utils.translation import gettext as _
 from django.contrib.auth.views import LoginView, LogoutView
 from task_manager.models import MyUser
@@ -17,15 +18,11 @@ class IndexPageView(View):
     })
 
 
-class UsersListView(View):
+class UsersListView(ListView):
 
-    def get(self, request):
-        users = MyUser.objects.all()
-        return render(
-            request,
-            'users.html',
-            context={ 'users': users } 
-        )
+    model = MyUser
+    context_object_name = 'users_list'
+    template_name = 'users.html'
 
 
 class UserAuthView(LoginView):
