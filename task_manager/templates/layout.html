@@ -1,4 +1,6 @@
 {% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=True %}
 {% load i18n %}
 {% get_current_language as LANGUAGE_CODE %}
 
@@ -18,8 +20,13 @@
       
       <div class="container">
       <main>
+        <div class="container wrapper flex-grow-1">
+          {% if messages %}
+              {% bootstrap_messages %}
+          {% endif %}
         {% block content %}
         {% endblock %}
+        </div>
       </main>
       </div>
       </body>

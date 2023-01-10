@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-09 17:14+0400\n"
+"POT-Creation-Date: 2023-01-10 11:27+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,6 +90,26 @@ msgstr "Дата создания"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/views.py:17
+#: task_manager/views.py:19
 msgid "World"
 msgstr "Мир"
+
+#: task_manager/views.py:33
+msgid "You are logged in"
+msgstr "Вы вошли успешно"
+
+#: task_manager/views.py:40
+msgid "You are logged out"
+msgstr "Вы вышли из системы"
+
+#: task_manager/views.py:48
+msgid "User profile created successfully"
+msgstr "Пользователь успешно создан"
+
+#: task_manager/views.py:56
+msgid "User profile updated"
+msgstr "Пользователь успешно изменен"
+
+#: task_manager/views.py:63
+msgid "User profile deleted"
+msgstr "Пользователь удален"

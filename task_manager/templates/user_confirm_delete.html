@@ -2,8 +2,8 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block content %}
-<h1 class="my-4">{% trans 'Delete user' %} {{user.username}}</h1>
-<form action="{% url 'user_delete' pk=user.id %}" method="post" class="form">
+<h1 class="my-4">{% trans 'Delete user' %} ?</h1>
+<form method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
