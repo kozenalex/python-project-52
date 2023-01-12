@@ -2,7 +2,7 @@
 {% block content %}
 {% load i18n %}
 <div class="container wrapper flex-grow-1">
-    <h1 class="my-4">Пользователи</h1>    
+    <h1 class="my-4">{% trans 'Users' %}</h1>    
 <table class="table table-striped">
 <thead>
   <tr>
@@ -20,15 +20,11 @@
       <td>{{ u.username }}</td>
       <td>{{ u }}</td>
       <td>{{ u.date_joined }}</td>
-      {% if user.is_authenticated and u.username == user.username or user.is_staff %}
       <td>
         <a href="{% url 'user_update' pk=u.id %}">{% trans 'Update' %}</a>
         <br>
         <a href="{% url 'user_delete' pk=u.id %}">{% trans 'Delete' %}</a>
       </td>
-      {% else %}
-      <td></td>
-      {% endif %}
     </tr>
     {% endfor %}
 </tbody>

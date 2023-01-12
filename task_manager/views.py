@@ -3,13 +3,13 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
 from django.views.generic.list import ListView
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.views import LoginView, LogoutView
 from task_manager.models import MyUser, Status
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from task_manager.forms import MyUserCreationForm, MyUserUpdateForm
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 
 class IndexPageView(View):
@@ -41,25 +41,31 @@ class UserLogoutView(LogoutView):
             messages.info(request, _('You are logged out'))
         return super().dispatch(request, *args, **kwargs)
 
+class UserView(LoginRequiredMixin, SuccessMessageMixin):
+    login_url = 'login'
+    model = MyUser
+
 
 class UserCreateView(SuccessMessageMixin, CreateView):
-    form_class = MyUserCreationForm
+
     model = MyUser
+    form_class = MyUserCreationForm
     template_name = 'create.html'
     success_message = _('User profile created successfully')
     success_url = reverse_lazy('login')
 
 
-class UserUpdateView(SuccessMessageMixin, UpdateView):
-    form_class = MyUserUpdateForm
-    model = MyUser
+class UserUpdateView(PermissionRequiredMixin, UserView, UpdateView):
+
+    permission_required = 'task_manager.change_MyUser'
+    fields = ['username', 'first_name', 'last_name', 'email']
     template_name = 'update.html'
     success_message = _('User profile updated')
     success_url = reverse_lazy('users_list')
 
 
-class UserDeleteView(SuccessMessageMixin, DeleteView):
-    model = MyUser
+class UserDeleteView(UserView, DeleteView):
+
     template_name = 'confirm_delete.html'
     success_message = _('User profile deleted')
     success_url = reverse_lazy('users_list')

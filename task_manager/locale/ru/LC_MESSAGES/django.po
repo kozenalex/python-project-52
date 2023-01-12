@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-10 11:27+0400\n"
+"POT-Creation-Date: 2023-01-12 14:20+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+#: task_manager/templates/confirm_delete.html:5
+#: task_manager/templates/statuses.html:25 task_manager/templates/users.html:27
+msgid "Delete"
+msgstr "Удаить"
+
+#: task_manager/templates/confirm_delete.html:11
+msgid "Confirm"
+msgstr "Подтвердить"
+
+#: task_manager/templates/create.html:5 task_manager/templates/create.html:11
+msgid "Create"
+msgstr "Создать"
 
 #: task_manager/templates/login.html:5
 msgid "Authorization"
@@ -32,49 +44,45 @@ msgstr "Вход"
 msgid "Task Manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/navigation.html:7
+#: task_manager/templates/navigation.html:8
+msgid "Stutuses"
+msgstr "Статусы"
+
+#: task_manager/templates/navigation.html:10
+#: task_manager/templates/users.html:5
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/navigation.html:9
-#: task_manager/templates/user_create.html:11
+#: task_manager/templates/navigation.html:12
 msgid "Register"
 msgstr "Регистрация"
 
-#: task_manager/templates/navigation.html:13
-#, fuzzy
-#| msgid "Log in"
+#: task_manager/templates/navigation.html:16
 msgid "Log out"
 msgstr "Выход"
 
-#: task_manager/templates/navigation.html:15
+#: task_manager/templates/navigation.html:18
 msgid "Log in"
 msgstr "Вход"
 
-#: task_manager/templates/user_confirm_delete.html:5
-msgid "Delete user"
-msgstr "Удалить пользователя"
+#: task_manager/templates/statuses.html:6
+msgid "Create status"
+msgstr "Создать статус"
 
-#: task_manager/templates/user_confirm_delete.html:11
-msgid "Confirm"
-msgstr "Подтверить"
+#: task_manager/templates/statuses.html:11
+msgid "Name"
+msgstr "Имя"
 
-#: task_manager/templates/user_create.html:5
-msgid "User registration"
-msgstr "Регистрация пользователя"
+#: task_manager/templates/statuses.html:12 task_manager/templates/users.html:12
+msgid "Created at"
+msgstr "Дата создания"
 
-#: task_manager/templates/user_update.html:5
-msgid "Change user profile"
-msgstr "Изменение данных пользователя"
-
-#: task_manager/templates/user_update.html:11
-#: task_manager/templates/users.html:25
+#: task_manager/templates/statuses.html:23 task_manager/templates/update.html:5
+#: task_manager/templates/update.html:11 task_manager/templates/users.html:25
 msgid "Update"
-msgstr "Изменить"
+msgstr "Ихменить"
 
 #: task_manager/templates/users.html:10
-#, fuzzy
-#| msgid "Users"
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -82,34 +90,38 @@ msgstr "Имя пользователя"
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/templates/users.html:12
-msgid "Created at"
-msgstr "Дата создания"
-
-#: task_manager/templates/users.html:27
-msgid "Delete"
-msgstr "Удалить"
-
-#: task_manager/views.py:19
+#: task_manager/views.py:20
 msgid "World"
 msgstr "Мир"
 
-#: task_manager/views.py:33
+#: task_manager/views.py:34
 msgid "You are logged in"
 msgstr "Вы вошли успешно"
 
-#: task_manager/views.py:40
+#: task_manager/views.py:41
 msgid "You are logged out"
-msgstr "Вы вышли из системы"
+msgstr "Вы вышли"
 
-#: task_manager/views.py:48
+#: task_manager/views.py:49
 msgid "User profile created successfully"
 msgstr "Пользователь успешно создан"
 
-#: task_manager/views.py:56
+#: task_manager/views.py:57
 msgid "User profile updated"
-msgstr "Пользователь успешно изменен"
+msgstr "Пользователь изменен"
 
-#: task_manager/views.py:63
+#: task_manager/views.py:64
 msgid "User profile deleted"
 msgstr "Пользователь удален"
+
+#: task_manager/views.py:83
+msgid "Status created successfuly"
+msgstr "Статус создан"
+
+#: task_manager/views.py:91
+msgid "Status updated successfuly"
+msgstr "Статус изменен"
+
+#: task_manager/views.py:98
+msgid "Status deleted"
+msgstr "Статус удален"
