@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
@@ -7,9 +7,9 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.views import LoginView, LogoutView
 from task_manager.models import MyUser, Status
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from task_manager.forms import MyUserCreationForm, MyUserUpdateForm
+from task_manager.forms import MyUserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 
 class IndexPageView(View):
@@ -55,9 +55,17 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     success_url = reverse_lazy('login')
 
 
-class UserUpdateView(PermissionRequiredMixin, UserView, UpdateView):
+class UserUpdateView(UserPassesTestMixin, UserView, UpdateView):
 
-    permission_required = 'task_manager.change_MyUser'
+    def test_func(self):
+        return self.request.user.id == self.get_object().id
+    
+    def handle_no_permission(self):
+        messages.info(self.request, _('You have no permissions'))
+        return redirect(
+            reverse_lazy('users_list')
+        )
+
     fields = ['username', 'first_name', 'last_name', 'email']
     template_name = 'update.html'
     success_message = _('User profile updated')
