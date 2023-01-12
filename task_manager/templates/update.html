@@ -2,8 +2,8 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block content %}
-<h1 class="my-4">{% trans 'Change user profile' %}</h1>
-<form action="{% url 'user_update' pk=user.id %}" method="post" class="form">
+<h1 class="my-4">{% trans 'Update' %}</h1>
+<form action="." method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}

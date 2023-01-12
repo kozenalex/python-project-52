@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from task_manager.models import MyUser
 
 

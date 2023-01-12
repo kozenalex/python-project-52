@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% load i18n %}
+<div class="container wrapper flex-grow-1">
+    <h1 class="my-4">{% trans Statuses %}</h1>
+    <a class="nav-link" href="{% url 'status_create' %}">Создать статус</a>
+<table class="table table-striped">
+<thead>
+  <tr>
+    <th>ID</th>
+    <th>{% trans 'Title' %}</th>
+    <th>{% trans 'Created at' %}</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+    {% for s in statuses_list %}  
+    <tr>
+      <td>{{ s.id }}</td>
+      <td>{{ s.name }}</td>
+      <td>{{ s.created_at }}</td>
+      <td>
+        <a href="{% url 'status_update' pk=s.id %}">{% trans 'Update' %}</a>
+        <br>
+        <a href="{% url 'status_delete' pk=s.id %}">{% trans 'Delete' %}</a>
+      </td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+  </div>
+{% endblock %}
