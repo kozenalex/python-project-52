@@ -9,6 +9,7 @@ from task_manager.models import MyUser, Status
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from task_manager.forms import MyUserCreationForm, MyUserUpdateForm
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class IndexPageView(View):
@@ -64,31 +65,35 @@ class UserDeleteView(SuccessMessageMixin, DeleteView):
     success_url = reverse_lazy('users_list')
 
 
-class StatusesListView(ListView):
-
+class StatusView(LoginRequiredMixin, SuccessMessageMixin):
+    login_url = 'login'
     model = Status
+
+
+class StatusesListView(StatusView, ListView):
+
     context_object_name = 'statuses_list'
     template_name = 'statuses.html'
 
 
-class StatusCreateView(SuccessMessageMixin, CreateView):
-    model = Status
+class StatusCreateView(StatusView, CreateView):
+
     fields = ['name']
     template_name = 'create.html'
     success_message = _('Status created successfuly')
     success_url = reverse_lazy('statuses_list')
 
 
-class StatusUpdateView(SuccessMessageMixin, UpdateView):
-    model = Status
+class StatusUpdateView(StatusView, UpdateView):
+
     fields = ['name']
     template_name = 'update.html'
     success_message = _('Status updated successfuly')
     success_url = reverse_lazy('statuses_list')
 
 
-class StatusDeleteView(SuccessMessageMixin, DeleteView):
-    model = Status
+class StatusDeleteView(StatusView, DeleteView):
+
     template_name = 'confirm_delete.html'
     success_message = _('Status deleted')
     success_url = reverse_lazy('statuses_list')
