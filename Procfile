@@ -1,1 +1,1 @@
-web: make migrate && gunicorn task_manager.wsgi
+web: python3 manage.py migrate && gunicorn task_manager.wsgi
