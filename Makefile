@@ -12,3 +12,6 @@ install:
 .PHONY: run
 run:
 		@$(MANAGE) runserver
+.PHONY: test
+test:
+		@$(MANAGE) test
