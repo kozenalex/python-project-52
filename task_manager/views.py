@@ -3,14 +3,14 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
 from django.views.generic.list import ListView
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext as _
 from django.contrib.auth.views import LoginView, LogoutView
-from task_manager.models import MyUser, Status
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from task_manager.forms import MyUserCreationForm
 from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from task_manager.models import MyUser, Status
+from task_manager.forms import MyUserCreationForm
+from task_manager.mixins import MyUserPermissionMixin
 
 class IndexPageView(View):
 
@@ -42,8 +42,10 @@ class UserLogoutView(LogoutView):
         return super().dispatch(request, *args, **kwargs)
 
 class UserView(LoginRequiredMixin, SuccessMessageMixin):
+
     login_url = 'login'
     model = MyUser
+    extra_context = {'title': _('User')}
 
 
 class UserCreateView(SuccessMessageMixin, CreateView):
@@ -51,20 +53,11 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     model = MyUser
     form_class = MyUserCreationForm
     template_name = 'create.html'
-    success_message = _('User profile created successfully')
+    success_message = _('User profile created successfully')    
     success_url = reverse_lazy('login')
 
 
-class UserUpdateView(UserPassesTestMixin, UserView, UpdateView):
-
-    def test_func(self):
-        return self.request.user.id == self.get_object().id
-    
-    def handle_no_permission(self):
-        messages.info(self.request, _('You have no permissions'))
-        return redirect(
-            reverse_lazy('users_list')
-        )
+class UserUpdateView(MyUserPermissionMixin, UserView, UpdateView):
 
     fields = ['username', 'first_name', 'last_name', 'email']
     template_name = 'update.html'
@@ -72,7 +65,7 @@ class UserUpdateView(UserPassesTestMixin, UserView, UpdateView):
     success_url = reverse_lazy('users_list')
 
 
-class UserDeleteView(UserView, DeleteView):
+class UserDeleteView(MyUserPermissionMixin, UserView, DeleteView):
 
     template_name = 'confirm_delete.html'
     success_message = _('User profile deleted')
@@ -82,6 +75,7 @@ class UserDeleteView(UserView, DeleteView):
 class StatusView(LoginRequiredMixin, SuccessMessageMixin):
     login_url = 'login'
     model = Status
+    extra_context = {'title': _('Status')}
 
 
 class StatusesListView(StatusView, ListView):
