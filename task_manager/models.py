@@ -16,3 +16,12 @@ class Status(models.Model):
     def __str__(self):
         return self.name
 
+
+class Task(models.Model):
+
+    name = models.CharField(max_length=255)
+    description = models.TextField
+    created_at = models.DateTimeField(auto_now_add=True)
+    executor = models.ForeignKey(MyUser, related_name='executor', on_delete=models.PROTECT)
+    author = models.ForeignKey(MyUser, related_name='author', on_delete=models.PROTECT)
+    status = models.ForeignKey(Status, null=True, on_delete=models.SET_NULL)

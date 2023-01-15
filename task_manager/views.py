@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from task_manager.models import MyUser, Status
+from task_manager.models import MyUser, Status, Task
 from task_manager.forms import MyUserCreationForm
 from task_manager.mixins import MyUserPermissionMixin
 
@@ -105,3 +105,10 @@ class StatusDeleteView(StatusView, DeleteView):
     template_name = 'confirm_delete.html'
     success_message = _('Status deleted')
     success_url = reverse_lazy('statuses_list')
+
+
+class TasksListView(LoginRequiredMixin, ListView):
+
+    template_name = 'tasks.html'
+    context_object_name = 'tasks_list'
+    model = Task
