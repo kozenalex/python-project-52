@@ -111,6 +111,7 @@ class StatusDeleteView(StatusView, DeleteView):
 
 class TasksListView(LoginRequiredMixin, ListView):
 
+    login_url = 'login'
     model = Task
     template_name = 'tasks.html'
     context_object_name = 'tasks_list'
@@ -162,5 +163,6 @@ class TaskDeleteView(UserPassesTestMixin, DeleteView):
 
 class TaskView(LoginRequiredMixin, DetailView):
 
+    login_url = 'login'
     model = Task
     template_name = 'task.html'
