@@ -18,12 +18,12 @@ class MyUserUpdateForm(UserChangeForm):
 
 
 class TaskForm(forms.ModelForm):
-    
+
     description = forms.CharField(
         widget=forms.Textarea
     )
     class Meta:
         model = Task
 
-        fields = ['name', 'description', 'status', 'executor']
+        fields = ['name', 'description', 'status', 'executor', 'label']
     

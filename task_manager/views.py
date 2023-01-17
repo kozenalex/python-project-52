@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
-from task_manager.models import MyUser, Status, Task
+from task_manager.models import Label, MyUser, Status, Task
 from task_manager.forms import MyUserCreationForm, TaskForm
 from task_manager.mixins import MyUserPermissionMixin, UserPassesTestMixin
 
@@ -174,3 +174,36 @@ class TaskView(LoginRequiredMixin, DetailView):
     login_url = 'login'
     model = Task
     template_name = 'task.html'
+
+
+class LabelsListView(LoginRequiredMixin, ListView):
+
+    login_url = 'login'
+    model = Label
+    template_name = 'labels.html'
+    context_object_name = 'labels_list'
+
+
+class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+
+    model = Label
+    fields = ['name']
+    template_name = 'create.html'
+    success_message = _('Label created successfuly')
+    success_url = reverse_lazy('labels_list')
+
+class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+
+    fields = ['name']
+    model = Label
+    template_name = 'update.html'
+    success_message = _('Label updated successfuly')
+    success_url = reverse_lazy('labels_list')
+
+
+class LabelDeleteView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+
+    model = Label
+    template_name = 'confirm_delete.html'
+    success_message = _('Label deleted successfuly')
+    success_url = reverse_lazy('labels_list')
