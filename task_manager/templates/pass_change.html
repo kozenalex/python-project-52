@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block content %}
-<h1 class="my-4">{% trans 'Update' %} {{ title }}</h1>
+<h1 class="my-4">{% trans 'Change password' %} for {{ user }}</h1>
 <form action="." method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
@@ -11,8 +11,5 @@
         {% trans 'Update' %}
       </button>
     {% endbuttons %}
-    {% if is_user %}
-    <a href="{% url 'pass_change' pk=user.id %}">{% trans 'Change password' %}</a>
-    {% endif %}
   </form>
 {% endblock %}

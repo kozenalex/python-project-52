@@ -4,7 +4,7 @@ from django.views import View
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django.utils.translation import gettext as _
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -63,7 +63,15 @@ class UserUpdateView(MyUserPermissionMixin, UserView, UpdateView):
 
     fields = ['username', 'first_name', 'last_name', 'email']
     template_name = 'update.html'
+    extra_context = {'is_user': True}
     success_message = _('User profile updated')
+    success_url = reverse_lazy('users_list')
+
+
+class UserPassChangeView(UserView, PasswordChangeView):
+
+    template_name = 'pass_change.html'
+    success_message = _('Password changed')
     success_url = reverse_lazy('users_list')
 
 
