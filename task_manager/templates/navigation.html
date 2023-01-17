@@ -6,7 +6,7 @@
     <nav class="my-2 my-md-0 mr-md-3">
       {% if user.is_authenticated %}
       <a class="p-2 text-dark" href="{% url 'statuses_list' %}">{% trans 'Stutuses' %}</a>
-      <a class="p-2 text-dark" href="{% url 'tasks_list' %}">{% trans 'Task' %}</a>
+      <a class="p-2 text-dark" href="{% url 'tasks_list' %}">{% trans 'Tasks' %}</a>
       {% endif %}
       <a class="p-2 text-dark" href="{% url 'users_list' %}">{% trans 'Users' %}</a>
       {% if not user.is_authenticated %}
