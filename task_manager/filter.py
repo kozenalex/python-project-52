@@ -7,12 +7,10 @@ class TaskFilter(filterset.FilterSet):
 
     def set_author(self, queryset, name, value):
         if not value:
-            return self.queryset
+            return queryset
         else:
-            self.queryset = Task.objects.filter(
-                author=self.request.user.id
-            )
-            return self.queryset
+            return queryset.filter(author=self.request.user.id)
+        
 
     status = filters.ModelChoiceFilter(
         label='Status',
