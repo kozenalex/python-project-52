@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
@@ -21,3 +22,16 @@ class MyUserPermissionMixin(UserPassesTestMixin):
             return redirect(
                 reverse_lazy('login')
             )
+
+
+class DelProtectionMixin():
+
+    def form_valid(self, form):
+        try:
+            self.object.delete()
+        except ProtectedError:
+            messages.error(
+                self.request,
+                _('You can not delete this record')
+            )
+        return redirect(self.success_url)

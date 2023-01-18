@@ -17,7 +17,7 @@ class Status(models.Model):
         return self.name
 
 
-class Label(models.Model):
+class Labels(models.Model):
 
     name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -34,7 +34,12 @@ class Task(models.Model):
     executor = models.ForeignKey(MyUser, related_name='executor', on_delete=models.PROTECT)
     author = models.ForeignKey(MyUser, related_name='author', on_delete=models.PROTECT)
     status = models.ForeignKey(Status, null=True, on_delete=models.SET_NULL)
-    label = models.ManyToManyField(Label, related_name='labels')
+    labels = models.ManyToManyField(Labels, through='LabelToTask')
 
     def __str__(self):
         return self.name
+
+class LabelToTask(models.Model):
+
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, null=True)
+    labels = models.ForeignKey(Labels, on_delete=models.PROTECT, null=True)

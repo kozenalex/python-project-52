@@ -198,6 +198,21 @@ files = [
 Django = ">=3.2"
 
 [[package]]
+name = "django-filter"
+version = "22.1"
+description = "Django-filter is a reusable Django application for allowing users to filter querysets dynamically."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "django-filter-22.1.tar.gz", hash = "sha256:ed473b76e84f7e83b2511bb2050c3efb36d135207d0128dfe3ae4b36e3594ba5"},
+    {file = "django_filter-22.1-py3-none-any.whl", hash = "sha256:ed429e34760127e3520a67f415bec4c905d4649fbe45d0d6da37e6ff5e0287eb"},
+]
+
+[package.dependencies]
+Django = ">=3.2"
+
+[[package]]
 name = "executing"
 version = "1.2.0"
 description = "Get the currently executing AST node of a frame, and other information"
@@ -558,14 +573,14 @@ cli = ["click (>=5.0)"]
 
 [[package]]
 name = "setuptools"
-version = "65.7.0"
+version = "66.0.0"
 description = "Easily download, build, install, upgrade, and uninstall Python packages"
 category = "main"
 optional = false
 python-versions = ">=3.7"
 files = [
-    {file = "setuptools-65.7.0-py3-none-any.whl", hash = "sha256:8ab4f1dbf2b4a65f7eec5ad0c620e84c34111a68d3349833494b9088212214dd"},
-    {file = "setuptools-65.7.0.tar.gz", hash = "sha256:4d3c92fac8f1118bb77a22181355e29c239cabfe2b9effdaa665c66b711136d7"},
+    {file = "setuptools-66.0.0-py3-none-any.whl", hash = "sha256:a78d01d1e2c175c474884671dde039962c9d74c7223db7369771fcf6e29ceeab"},
+    {file = "setuptools-66.0.0.tar.gz", hash = "sha256:bd6eb2d6722568de6d14b87c44a96fac54b2a45ff5e940e639979a3d1792adb6"},
 ]
 
 [package.extras]
@@ -659,14 +674,14 @@ files = [
 
 [[package]]
 name = "wcwidth"
-version = "0.2.5"
+version = "0.2.6"
 description = "Measures the displayed width of unicode strings in a terminal"
 category = "main"
 optional = false
 python-versions = "*"
 files = [
-    {file = "wcwidth-0.2.5-py2.py3-none-any.whl", hash = "sha256:beb4802a9cebb9144e99086eff703a642a13d6a0052920003a230f3294bbe784"},
-    {file = "wcwidth-0.2.5.tar.gz", hash = "sha256:c4d647b99872929fdb7bdcaa4fbe7f01413ed3d98077df798530e5b04f116c83"},
+    {file = "wcwidth-0.2.6-py2.py3-none-any.whl", hash = "sha256:795b138f6875577cd91bba52baf9e445cd5118fd32723b460e30a0af30ea230e"},
+    {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
 ]
 
 [[package]]
@@ -687,4 +702,4 @@ brotli = ["Brotli"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8.1"
-content-hash = "13f9a2b8f9b15883387a19bd21b61633e9d99c40d8e01279a6478137e49656d3"
+content-hash = "00098f76da7fa2f5be07dda187df9c45393eaaa8fd4a217d7af331b67d72c81b"
