@@ -1,35 +1,35 @@
 from django import forms
-import django_filters
-
+from django_filters import filters, filterset
 from task_manager.models import Task, Labels, Status, MyUser
 
-class TaskFilter(django_filters.FilterSet):
+
+class TaskFilter(filterset.FilterSet):
 
     def set_author(self, queryset, name, value):
         if not value:
             return self.queryset
         else:
-            queryset = Task.objects.filter(
+            self.queryset = Task.objects.filter(
                 author=self.request.user.id
             )
-            return queryset
+            return self.queryset
 
-    status = django_filters.ModelChoiceFilter(
+    status = filters.ModelChoiceFilter(
         label='Status',
         queryset=Status.objects.all(),
         widget=forms.Select(attrs={'class': 'mr-4'})
     )
-    executor = django_filters.ModelChoiceFilter(
+    executor = filters.ModelChoiceFilter(
         label='Executor',
         queryset=MyUser.objects.all(),
         widget=forms.Select(attrs={'class': 'mr-4'})
     )
-    labels = django_filters.ModelChoiceFilter(
+    labels = filters.ModelChoiceFilter(
         label='Labels',
         queryset=Labels.objects.all(),
         widget=forms.Select(attrs={'class': 'mr-4'})
     )
-    self_tasks = django_filters.BooleanFilter(
+    self_tasks = filters.BooleanFilter(
         label='Only my tasks',
         field_name='author',
         widget=forms.CheckboxInput(),
@@ -40,4 +40,3 @@ class TaskFilter(django_filters.FilterSet):
 
         model = Task
         fields = ['status', 'executor', 'labels']
-        

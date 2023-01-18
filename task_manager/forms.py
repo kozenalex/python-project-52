@@ -22,8 +22,8 @@ class TaskForm(forms.ModelForm):
     description = forms.CharField(
         widget=forms.Textarea
     )
+
     class Meta:
         model = Task
 
         fields = ['name', 'description', 'status', 'executor', 'labels']
-    

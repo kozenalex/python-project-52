@@ -1,6 +1,5 @@
 from django.test import TestCase, Client
-from django.urls import reverse, reverse_lazy
-from django.shortcuts import redirect
+from django.urls import reverse
 from task_manager.models import MyUser
 
 
@@ -10,7 +9,7 @@ class TestMyUser(TestCase):
         MyUser.objects.create_user(username='alex_alexov', password='qwerty')
         self.user = MyUser.objects.get(id=1)
         self.c = Client()
-    
+
     def test_user_login_success(self):
         response = self.c.post(
             reverse('login'),
@@ -20,7 +19,7 @@ class TestMyUser(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed('index.html')
         self.assertRedirects(response, reverse('index_page'))
-    
+
     def test_user_create(self):
         response = self.c.post(
             reverse('user_create'),

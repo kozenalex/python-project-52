@@ -10,7 +10,7 @@ class MyUserPermissionMixin(UserPassesTestMixin):
 
     def test_func(self):
         return self.request.user.id == self.get_object().id
-    
+
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
             messages.warning(self.request, _('You have no permissions'))

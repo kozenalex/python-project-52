@@ -15,3 +15,6 @@ run:
 .PHONY: test
 test:
 		@$(MANAGE) test
+.PHONY: lint
+lint:
+		poetry run flake8 ./task_manager

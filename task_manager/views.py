@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
-from django.db.models import ProtectedError
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
 from django.views.generic.list import ListView
@@ -16,13 +15,12 @@ from task_manager.models import Labels, MyUser, Status, Task
 from task_manager.forms import MyUserCreationForm, TaskForm
 from task_manager.mixins import DelProtectionMixin, MyUserPermissionMixin, UserPassesTestMixin
 
+
 class IndexPageView(View):
 
     def get(self, request):
-        
-        return render(request, 'index.html', context={
-        'who': _('World'),
-    })
+
+        return render(request, 'index.html', context={'who': _('World')})
 
 
 class UsersListView(ListView):
@@ -37,7 +35,7 @@ class UserAuthView(SuccessMessageMixin, LoginView):
     model = MyUser
     template_name = 'login.html'
     success_message = _('You are logged in')
-    
+
 
 class UserLogoutView(LogoutView):
 
@@ -45,6 +43,7 @@ class UserLogoutView(LogoutView):
         if request.user.is_authenticated:
             messages.info(request, _('You are logged out'))
         return super().dispatch(request, *args, **kwargs)
+
 
 class UserView(LoginRequiredMixin, SuccessMessageMixin):
 
@@ -58,7 +57,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
     model = MyUser
     form_class = MyUserCreationForm
     template_name = 'create.html'
-    success_message = _('User profile created successfully')    
+    success_message = _('User profile created successfully')
     success_url = reverse_lazy('login')
 
 
@@ -83,7 +82,6 @@ class UserDeleteView(MyUserPermissionMixin, DelProtectionMixin, UserView, Delete
     template_name = 'confirm_delete.html'
     success_message = _('User profile deleted')
     success_url = reverse_lazy('users_list')
-
 
 
 class StatusView(LoginRequiredMixin, SuccessMessageMixin):
@@ -127,7 +125,6 @@ class TasksListView(LoginRequiredMixin, FilterView):
     model = Task
     template_name = 'tasks.html'
     filterset_class = TaskFilter
-    
 
 
 class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
@@ -156,6 +153,7 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     success_message = _('Task updated')
     success_url = reverse_lazy('tasks_list')
 
+
 class TaskDeleteView(UserPassesTestMixin, DeleteView):
 
     model = Task
@@ -167,7 +165,7 @@ class TaskDeleteView(UserPassesTestMixin, DeleteView):
         task_id = self.get_object().id
         author = Task.objects.get(id=task_id).author
         return self.request.user.id == author.id
-    
+
     def handle_no_permission(self):
         messages.warning(self.request, _('You have no permissions'))
         return redirect(reverse_lazy('tasks_list'))
@@ -196,6 +194,7 @@ class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     success_message = _('Label created successfuly')
     success_url = reverse_lazy('labels_list')
 
+
 class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     fields = ['name']
@@ -211,4 +210,3 @@ class LabelDeleteView(LoginRequiredMixin, DelProtectionMixin, SuccessMessageMixi
     template_name = 'confirm_delete.html'
     success_message = _('Label deleted successfuly')
     success_url = reverse_lazy('labels_list')
-
