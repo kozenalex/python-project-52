@@ -25,6 +25,7 @@ class TestStatus(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, reverse('statuses_list'))
         self.assertTemplateUsed(response, 'statuses.html')
+        self.assertEqual(Status.objects.all().count(), 2)
 
     def test_status_update(self):
         response = self.c.post(
