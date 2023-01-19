@@ -28,6 +28,7 @@ jobs:
     - name: Run Tests
       run: |
         python3 manage.py test --with-coverage --cover-xml
+        flake8 task_manager
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.7.4
       env:
