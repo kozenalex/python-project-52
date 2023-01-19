@@ -14,7 +14,9 @@ run:
 		@$(MANAGE) runserver
 .PHONY: test
 test:
-		@$(MANAGE) test
+		@$(MANAGE) test --with-coverage
 .PHONY: lint
 lint:
 		poetry run flake8 ./task_manager
+test-coverage:
+	poetry run pytest --cov=page_loader --cov-report xml

@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'django_extensions',
     'task_manager',
     'bootstrap4',
-    'django_filters'
+    'django_filters',
+    'django_nose'
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,9 @@ LOGIN_REDIRECT_URL = 'index_page'
 LOGOUT_REDIRECT_URL = 'index_page'
 
 CSRF_TRUSTED_ORIGINS = ["https://python-project-52-production-ba0b.up.railway.app"]
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=task_manager',
+]
