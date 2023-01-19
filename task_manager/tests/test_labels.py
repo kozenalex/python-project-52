@@ -37,7 +37,7 @@ class TestStatus(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, reverse('labels_list'))
         self.assertTemplateUsed(response, 'labels.html')
-    
+
     def test_label_delete_protect(self):
         task = Task.objects.create(
             name='test',
