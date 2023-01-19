@@ -27,11 +27,11 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        python3 manage.py test --with-coverage
+        python3 manage.py test --with-coverage --cover-xml
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.7.4
       env:
         CC_TEST_REPORTER_ID: a46a557f244d91b52472ebc3b1e4484f320b26bb0a37413f631698ed0d520cd7
       with:
-        coverageCommand: python3 manage.py test --with-coverage
+        coverageCommand: python3 manage.py test --with-coverage --cover-xml
         debug: true
