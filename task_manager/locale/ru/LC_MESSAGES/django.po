@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-20 16:25+0400\n"
+"POT-Creation-Date: 2023-01-20 17:09+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/mixins.py:16 task_manager/views.py:170
+#: task_manager/mixins.py:16 task_manager/views.py:174
 msgid "You have no permissions"
 msgstr "У вас нет прав на изменение другого пользователя"
 
@@ -42,10 +42,6 @@ msgstr "Удалить"
 #: task_manager/templates/confirm_delete.html:11
 msgid "Confirm"
 msgstr "Подтвердить"
-
-#: task_manager/templates/create.html:5 task_manager/templates/create.html:11
-msgid "Create"
-msgstr "Создать"
 
 #: task_manager/templates/labels.html:4
 #: task_manager/templates/navigation.html:3
@@ -76,7 +72,7 @@ msgstr "Изменить"
 
 #: task_manager/templates/login.html:5
 msgid "Authorization"
-msgstr "Авторизация"
+msgstr "Вход"
 
 #: task_manager/templates/login.html:11
 #: task_manager/templates/navigation.html:25
@@ -95,9 +91,9 @@ msgstr "Задачи"
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/navigation.html:6
-msgid "Register"
-msgstr "Ригистрация"
+#: task_manager/templates/navigation.html:6 task_manager/views.py:62
+msgid "Registration"
+msgstr "Регистрация"
 
 #: task_manager/templates/navigation.html:9
 msgid "Task Manager"
@@ -128,7 +124,7 @@ msgstr "Создать задачу"
 msgid "Show"
 msgstr "Показать"
 
-#: task_manager/templates/tasks.html:25 task_manager/views.py:90
+#: task_manager/templates/tasks.html:25 task_manager/views.py:94
 msgid "Status"
 msgstr "Статус"
 
@@ -168,56 +164,63 @@ msgstr "Пользователя"
 msgid "User profile created successfully"
 msgstr "Пользователь успешно создан"
 
-#: task_manager/views.py:69
+#: task_manager/views.py:63
+msgid "Signin"
+msgstr "Зарегистрировать"
+
+#: task_manager/views.py:73
 msgid "User profile updated"
 msgstr "Пользователь успешно изменен"
 
-#: task_manager/views.py:76
+#: task_manager/views.py:80
 msgid "Password changed"
 msgstr "Пароль успешно изменен"
 
-#: task_manager/views.py:83
+#: task_manager/views.py:87
 msgid "User profile deleted"
 msgstr "Пользователь удален"
 
-#: task_manager/views.py:103
+#: task_manager/views.py:107
 msgid "Status created successfuly"
 msgstr "Стату создан"
 
-#: task_manager/views.py:111
+#: task_manager/views.py:115
 msgid "Status updated successfuly"
 msgstr "Статус изменен"
 
-#: task_manager/views.py:118
+#: task_manager/views.py:122
 msgid "Status deleted"
 msgstr "Статус уален"
 
-#: task_manager/views.py:136
+#: task_manager/views.py:140
 msgid "Task created"
 msgstr "Задача успешно создана"
 
-#: task_manager/views.py:153
+#: task_manager/views.py:157
 msgid "Task updated"
 msgstr "Задача изменена"
 
-#: task_manager/views.py:160
+#: task_manager/views.py:164
 msgid "Task"
 msgstr "Задача"
 
-#: task_manager/views.py:194
+#: task_manager/views.py:198
 msgid "Label created successfuly"
 msgstr "Метка успешно создана"
 
-#: task_manager/views.py:203
+#: task_manager/views.py:207
 msgid "Label updated successfuly"
 msgstr "Метка изменена"
 
-#: task_manager/views.py:211
+#: task_manager/views.py:215
 msgid "Label deleted successfuly"
 msgstr "Метка удалена"
 
-#~ msgid "Log out"
-#~ msgstr "Выход"
+#, fuzzy
+#~| msgid "Registration"
+#~ msgid "Registrate"
+#~ msgstr "Зарегистрировать"
 
-#~ msgid "Log in"
-#~ msgstr "Вход"
+#, fuzzy
+#~ msgid "Rigestrate"
+#~ msgstr "Зарегистрировать"
