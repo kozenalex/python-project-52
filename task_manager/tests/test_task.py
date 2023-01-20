@@ -69,6 +69,23 @@ class TestTask(TestCase):
         self.assertTemplateUsed(response, 'task.html')
         self.assertContains(response, self.task.name)
 
+    def task_filter_test(self):
+        status3 = Status.objects.create(name='test3')
+        Task.objects.create(
+            name='test3',
+            description='test3',
+            status=status3,
+            executor=self.user,
+            author=self.user
+        )
+        response = self.c.get(
+            reverse('tasks_list'),
+            content_type='text/html',
+            data={'status': 3}
+        )
+        self.assertNotContains(response, 'test1')
+        self.assertTemplateUsed(response, 'tasks.html')
+
     def test_task_delete(self):
         response = self.c.post(
             reverse('task_delete', kwargs={'pk': 1}),
