@@ -210,10 +210,3 @@ class LabelDeleteView(LoginRequiredMixin, DelProtectionMixin, SuccessMessageMixi
     template_name = 'confirm_delete.html'
     success_message = _('Label deleted successfuly')
     success_url = reverse_lazy('labels_list')
-
-
-def custom_page_not_found_view(request, exception):
-    context = {}
-    response = render(request, "pages/errors/404.html", context=context)
-    response.status_code = 404
-    return response

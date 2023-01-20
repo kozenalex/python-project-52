@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from task_manager import views
 
-handler404 = 'task_manager.views.custom_page_not_found_view'
+# handler404 = 'task_manager.views.custom_page_not_found_view'
+# handler500 = 'task_manager.views.custom_page_500_view'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
