@@ -36,3 +36,4 @@ wcwidth==0.2.5
 whitenoise==6.2.0
 coverage==7.0.5
 django-nose==1.4.7
+rollbar==0.16.3
