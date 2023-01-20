@@ -165,7 +165,7 @@ msgstr "Пользователя"
 
 #: task_manager/views.py:60
 msgid "User profile created successfully"
-msgstr "Пользователь успешно создан"
+msgstr "Пользователь успешно зарегистрирован"
 
 #: task_manager/views.py:63
 msgid "Signin"
