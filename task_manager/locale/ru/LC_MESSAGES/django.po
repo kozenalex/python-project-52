@@ -22,7 +22,7 @@ msgstr ""
 
 #: task_manager/mixins.py:16 task_manager/views.py:170
 msgid "You have no permissions"
-msgstr "У вас нет прав на это"
+msgstr "У вас нет прав для изменения другого пользователя."
 
 #: task_manager/mixins.py:21
 #, fuzzy
@@ -172,11 +172,11 @@ msgstr "Мир"
 
 #: task_manager/views.py:37
 msgid "You are logged in"
-msgstr "Вы вошли успешно"
+msgstr "Вы залогинены"
 
 #: task_manager/views.py:44
 msgid "You are logged out"
-msgstr "Вы вышли"
+msgstr "Вы разлогинены"
 
 #: task_manager/views.py:52
 #, fuzzy
