@@ -162,6 +162,6 @@ NOSE_ARGS = [
 ROLLBAR = {
     'access_token': 'POST_SERVER_ITEM_ACCESS_TOKEN',
     'environment': 'development' if DEBUG else 'production',
-    'branch': 'master',
-    'root': '/task_manager',
+    'branch': 'main',
+    'root': BASE_DIR,
 }
