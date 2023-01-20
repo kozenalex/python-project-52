@@ -1,15 +1,19 @@
 {% extends 'layout.html' %}
 {% block content %}
 {% load i18n %}
+{% translate 'Statuses' as statuses %}
+{% translate 'Create status' as cr_status %}
+{% translate 'Name' as name %}
+{% translate 'Created at' as created_at %}
 <div class="container wrapper flex-grow-1">
-    <h1 class="my-4">{% trans 'Statuses' %}</h1>
-    <a class="nav-link" href="{% url 'status_create' %}">{% trans 'Create status' %}</a>
+    <h1 class="my-4">{{ statuses }}</h1>
+    <a class="nav-link" href="{% url 'status_create' %}">{{ cr_status }}</a>
 <table class="table table-striped">
 <thead>
   <tr>
     <th>ID</th>
-    <th>{% trans 'Name' %}</th>
-    <th>{% trans 'Created at' %}</th>
+    <th>{{ name }}</th>
+    <th>{{ created_at }}</th>
     <th></th>
   </tr>
 </thead>

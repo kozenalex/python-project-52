@@ -27,7 +27,7 @@ load_dotenv(dotenv_path=env_path)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY', 'workaround')
-POST_SERVER_ITEM_ACCESS_TOKEN = os.getenv('POST_SERVER_ITEM_ACCESS_TOKEN')
+ROLLBAR_TOKEN = os.getenv('ROLLBAR_TOKEN')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
@@ -160,7 +160,7 @@ NOSE_ARGS = [
 ]
 
 ROLLBAR = {
-    'access_token': 'POST_SERVER_ITEM_ACCESS_TOKEN',
+    'access_token': 'ROLLBAR_TOKEN',
     'environment': 'development' if DEBUG else 'production',
     'code_version': '1.0',
     'root': BASE_DIR,

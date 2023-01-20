@@ -3,7 +3,7 @@ from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 
 
 class MyUserPermissionMixin(UserPassesTestMixin):

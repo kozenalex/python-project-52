@@ -81,7 +81,7 @@ class TestTask(TestCase):
         response = self.c.get(
             reverse('tasks_list'),
             content_type='text/html',
-            data={'status': 3}
+            data={'status': status3}
         )
         self.assertNotContains(response, 'test1')
         self.assertTemplateUsed(response, 'tasks.html')

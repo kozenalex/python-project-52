@@ -4,7 +4,7 @@ from django.views import View
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django_filters.views import FilterView
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
