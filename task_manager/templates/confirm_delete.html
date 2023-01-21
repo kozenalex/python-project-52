@@ -2,13 +2,14 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% block content %}
-<h1 class="my-4">{% trans 'Delete' %} {{ title }} ?</h1>
+<h1 class="my-4">{{ title }} ?</h1>
+<p>{% trans 'Are you sure you want to delete ' %}{{ object }}?</p>
 <form method="post" class="form">
     {% csrf_token %}
     {% bootstrap_form form %}
     {% buttons %}
-      <button type="submit" class="btn btn-primary">
-        {% trans 'Confirm' %}
+      <button type="submit" class="btn btn-danger">
+        {% trans 'Yes, Delete' %}
       </button>
     {% endbuttons %}
   </form>

@@ -56,7 +56,7 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
     model = MyUser
     form_class = MyUserCreationForm
-    template_name = 'create.html'
+    template_name = 'edit.html'
     success_message = _('User profile created successfully')
     extra_context = {
         'title': _('Registration'),
@@ -67,10 +67,13 @@ class UserCreateView(SuccessMessageMixin, CreateView):
 
 class UserUpdateView(MyUserPermissionMixin, UserView, UpdateView):
 
-    fields = ['username', 'first_name', 'last_name', 'email']
-    template_name = 'update.html'
-    extra_context = {'is_user': True}
-    success_message = _('User profile updated')
+    form_class = MyUserCreationForm
+    template_name = 'edit.html'
+    extra_context = {
+        'title': _('Update user profile'),
+        'button': _('Update')
+    }
+    success_message = _('Profile updated')
     success_url = reverse_lazy('users_list')
 
 
@@ -84,6 +87,10 @@ class UserPassChangeView(UserView, PasswordChangeView):
 class UserDeleteView(MyUserPermissionMixin, DelProtectionMixin, UserView, DeleteView):
 
     template_name = 'confirm_delete.html'
+    extra_context = {
+        'title': _('Delete user'),
+        'is_user': True
+    }
     success_message = _('User profile deleted')
     success_url = reverse_lazy('users_list')
 
@@ -91,27 +98,35 @@ class UserDeleteView(MyUserPermissionMixin, DelProtectionMixin, UserView, Delete
 class StatusView(LoginRequiredMixin, SuccessMessageMixin):
     login_url = 'login'
     model = Status
-    extra_context = {'title': _('Status')}
 
 
 class StatusesListView(StatusView, ListView):
 
     context_object_name = 'statuses_list'
     template_name = 'statuses.html'
+    extra_context = {'title': _('Status')}
 
 
 class StatusCreateView(StatusView, CreateView):
 
     fields = ['name']
-    template_name = 'create.html'
+    template_name = 'edit.html'
     success_message = _('Status created successfuly')
     success_url = reverse_lazy('statuses_list')
+    extra_context = {
+        'title': _('Create status'),
+        'button': _('Create')
+    }
 
 
 class StatusUpdateView(StatusView, UpdateView):
 
     fields = ['name']
-    template_name = 'update.html'
+    template_name = 'edit.html'
+    extra_context = {
+        'title': _('Update status'),
+        'button': _('Update')
+    }
     success_message = _('Status updated successfuly')
     success_url = reverse_lazy('statuses_list')
 
@@ -119,6 +134,9 @@ class StatusUpdateView(StatusView, UpdateView):
 class StatusDeleteView(StatusView, DeleteView):
 
     template_name = 'confirm_delete.html'
+    extra_context = {
+        'title': _('Delete status')
+    }
     success_message = _('Status deleted')
     success_url = reverse_lazy('statuses_list')
 
@@ -136,7 +154,11 @@ class TaskCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     login_url = 'login'
     model = Task
     form_class = TaskForm
-    template_name = 'create.html'
+    template_name = 'edit.html'
+    extra_context = {
+        'title': _('Create task'),
+        'button': _('Create')
+    }
     success_message = _('Task created')
     success_url = reverse_lazy('tasks_list')
 
@@ -153,7 +175,11 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     login_url = 'login'
     form_class = TaskForm
     model = Task
-    template_name = 'update.html'
+    template_name = 'edit.html'
+    extra_context = {
+        'title': _('Update task'),
+        'button': _('Update')
+    }
     success_message = _('Task updated')
     success_url = reverse_lazy('tasks_list')
 
@@ -161,9 +187,11 @@ class TaskUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 class TaskDeleteView(UserPassesTestMixin, DeleteView):
 
     model = Task
-    extra_context = {'title': _('Task')}
     template_name = 'confirm_delete.html'
     success_url = reverse_lazy('tasks_list')
+    extra_context = {
+        'title': _('Delete task')
+    }
 
     def test_func(self):
         task_id = self.get_object().id
@@ -194,7 +222,11 @@ class LabelCreateView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 
     model = Labels
     fields = ['name']
-    template_name = 'create.html'
+    template_name = 'edit.html'
+    extra_context = {
+        'title': _('Create label'),
+        'button': _('Create')
+    }
     success_message = _('Label created successfuly')
     success_url = reverse_lazy('labels_list')
 
@@ -203,7 +235,11 @@ class LabelUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
     fields = ['name']
     model = Labels
-    template_name = 'update.html'
+    template_name = 'edit.html'
+    extra_context = {
+        'title': _('Update label'),
+        'button': _('Update')
+    }
     success_message = _('Label updated successfuly')
     success_url = reverse_lazy('labels_list')
 
@@ -212,5 +248,8 @@ class LabelDeleteView(LoginRequiredMixin, DelProtectionMixin, SuccessMessageMixi
 
     model = Labels
     template_name = 'confirm_delete.html'
+    extra_context = {
+        'title': _('Delete label')
+    }
     success_message = _('Label deleted successfuly')
     success_url = reverse_lazy('labels_list')

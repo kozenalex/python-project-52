@@ -10,13 +10,6 @@ class MyUserCreationForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'email']
 
 
-class MyUserUpdateForm(UserChangeForm):
-
-    class Meta:
-        model = MyUser
-        fields = ['username', 'first_name', 'last_name', 'email', 'password']
-
-
 class TaskForm(forms.ModelForm):
 
     description = forms.CharField(

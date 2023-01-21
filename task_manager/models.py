@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import gettext as _
 
 
 class MyUser(User):
@@ -10,7 +11,7 @@ class MyUser(User):
 
 class Status(models.Model):
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name=_('Name'))
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -19,7 +20,7 @@ class Status(models.Model):
 
 class Labels(models.Model):
 
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, verbose_name=_('Name'))
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -28,13 +29,13 @@ class Labels(models.Model):
 
 class Task(models.Model):
 
-    name = models.CharField(max_length=255)
-    description = models.CharField(max_length=700, default='')
-    created_at = models.DateTimeField(auto_now_add=True)
-    executor = models.ForeignKey(MyUser, related_name='executor', on_delete=models.PROTECT)
-    author = models.ForeignKey(MyUser, related_name='author', on_delete=models.PROTECT)
-    status = models.ForeignKey(Status, null=True, on_delete=models.SET_NULL)
-    labels = models.ManyToManyField(Labels, through='LabelToTask')
+    name = models.CharField(max_length=255, verbose_name=_('Name'))
+    description = models.CharField(max_length=700, default='', verbose_name=_('Description'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created at'))
+    executor = models.ForeignKey(MyUser, related_name='executor', on_delete=models.PROTECT, verbose_name=_('Executor'))
+    author = models.ForeignKey(MyUser, related_name='author', on_delete=models.PROTECT, verbose_name=_('Author'))
+    status = models.ForeignKey(Status, null=True, on_delete=models.SET_NULL, verbose_name=_('Status'))
+    labels = models.ManyToManyField(Labels, through='LabelToTask', verbose_name=_('Labels'))
 
     def __str__(self):
         return self.name
