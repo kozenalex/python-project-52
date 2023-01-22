@@ -1,9 +1,9 @@
 from django.test import TestCase, Client
 from django.urls import reverse
-from task_manager.models import MyUser, Labels, Task
+from task_manager.models import MyUser, Labels, Task, Status
 
 
-class TestStatus(TestCase):
+class TestLabels(TestCase):
 
     def setUp(self) -> None:
         MyUser.objects.create_user(username='alex_alexov', password='qwerty')
@@ -15,6 +15,7 @@ class TestStatus(TestCase):
         )
         self.user = MyUser.objects.get(id=1)
         self.label = Labels.objects.get(id=1)
+        self.status = Status.objects.create(name='teststatus')
 
     def test_label_create(self):
         response = self.c.post(
@@ -43,6 +44,7 @@ class TestStatus(TestCase):
             name='test',
             author=self.user,
             executor=self.user,
+            status=self.status
         )
         task.labels.add(self.label)
         response = self.c.post(
