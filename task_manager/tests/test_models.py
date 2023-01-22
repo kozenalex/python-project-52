@@ -14,8 +14,7 @@ class TestModels(TestCase):
             description='testetstet',
             executor=self.user,
             author=self.user,
-            status=self.status,
-            labels=self.label
+            status=self.status
         )
 
     def test_verbose_label(self):
