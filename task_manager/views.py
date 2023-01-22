@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.db.models import ProtectedError
 from django.urls import reverse_lazy
 from django.views import View
 from django.contrib import messages
@@ -49,7 +50,6 @@ class UserView(LoginRequiredMixin, SuccessMessageMixin):
 
     login_url = 'login'
     model = MyUser
-    extra_context = {'title': _('User')}
 
 
 class UserCreateView(SuccessMessageMixin, CreateView):
@@ -84,7 +84,7 @@ class UserPassChangeView(UserView, PasswordChangeView):
     success_url = reverse_lazy('users_list')
 
 
-class UserDeleteView(MyUserPermissionMixin, DelProtectionMixin, UserView, DeleteView):
+class UserDeleteView(MyUserPermissionMixin, UserView, DeleteView):
 
     template_name = 'confirm_delete.html'
     extra_context = {
@@ -93,6 +93,14 @@ class UserDeleteView(MyUserPermissionMixin, DelProtectionMixin, UserView, Delete
     }
     success_message = _('User profile deleted')
     success_url = reverse_lazy('users_list')
+
+    def post(self, request, *args, **kwargs):
+        try:
+            request.user.delete()
+            messages.success(request, self.success_message)
+        except ProtectedError:
+            messages.error(request, _('You can not delete user who is in use'))
+        return redirect(self.success_url)
 
 
 class StatusView(LoginRequiredMixin, SuccessMessageMixin):
