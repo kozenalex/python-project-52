@@ -48,7 +48,8 @@ class TestMyUser(TestCase):
                 'first_name': 'foo',
                 'last_name': 'bar',
                 'email': 'foo@bar.mp3',
-                'password': 'asdfgh'
+                'password1': 'asdfgh',
+                'password2': 'asdfgh'
             },
             follow=True
         )

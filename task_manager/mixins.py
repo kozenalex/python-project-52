@@ -30,6 +30,7 @@ class DelProtectionMixin():
     def form_valid(self, form):
         try:
             self.object.delete()
+            messages.success(self.request, self.success_message)
         except ProtectedError:
             if isinstance(self.object, Labels):
                 messages.error(self.request, _('You can not delete Label which is used'))
