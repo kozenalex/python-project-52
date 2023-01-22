@@ -84,7 +84,7 @@ class UserPassChangeView(UserView, PasswordChangeView):
     success_url = reverse_lazy('users_list')
 
 
-class UserDeleteView(MyUserPermissionMixin, UserView, DeleteView):
+class UserDeleteView(MyUserPermissionMixin, UserView, DeleteView, DelProtectionMixin):
 
     template_name = 'confirm_delete.html'
     extra_context = {

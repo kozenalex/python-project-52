@@ -27,13 +27,14 @@ class MyUserPermissionMixin(UserPassesTestMixin):
 
 class DelProtectionMixin():
 
-    def form_valid(self, form):
+    def post(self, request, *args, **kwargs):
+        object = self.get_object()
         try:
-            self.object.delete()
+            object.delete()
             messages.success(self.request, self.success_message)
         except ProtectedError:
-            if isinstance(self.object, Labels):
+            if isinstance(object, Labels):
                 messages.error(self.request, _('You can not delete Label which is used'))
-            if isinstance(self.object, Status):
+            if isinstance(object, Status):
                 messages.error(self.request, _('You can not delete Status which is used'))
         return redirect(self.success_url)
