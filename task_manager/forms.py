@@ -12,10 +12,6 @@ class MyUserCreationForm(UserCreationForm):
 
 class TaskForm(forms.ModelForm):
 
-    description = forms.CharField(
-        widget=forms.Textarea
-    )
-
     class Meta:
         model = Task
 

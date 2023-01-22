@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-22 11:59+0400\n"
+"POT-Creation-Date: 2023-01-22 13:42+0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,11 @@ msgstr "У вас нет прав на изменение другого пол�
 msgid "You must log in"
 msgstr "Вы не авторизованы! Пожалуйста, выполните вход."
 
-#: task_manager/mixins.py:35
+#: task_manager/mixins.py:37
 msgid "You can not delete Label which is used"
 msgstr "Невозможно удалить метку, потому что она используется"
 
-#: task_manager/mixins.py:37
+#: task_manager/mixins.py:39
 msgid "You can not delete Status which is used"
 msgstr "Невозможно удалить статус, потому что он используется"
 
@@ -87,7 +87,7 @@ msgstr "Вы уверены, что хотите удалить"
 msgid "Yes, Delete"
 msgstr "Да, удалить"
 
-#: task_manager/templates/labels.html:5 task_manager/views.py:235
+#: task_manager/templates/labels.html:5 task_manager/views.py:236
 msgid "Create label"
 msgstr "Создать метку"
 
@@ -96,7 +96,7 @@ msgstr "Создать метку"
 #: task_manager/templates/statuses.html:27 task_manager/templates/tasks.html:42
 #: task_manager/templates/users.html:24 task_manager/views.py:74
 #: task_manager/views.py:136 task_manager/views.py:189
-#: task_manager/views.py:249
+#: task_manager/views.py:250
 msgid "Update"
 msgstr "Изменить"
 
@@ -219,7 +219,7 @@ msgid "Status created successfuly"
 msgstr "Статус успешно создан"
 
 #: task_manager/views.py:126 task_manager/views.py:168
-#: task_manager/views.py:236
+#: task_manager/views.py:237
 msgid "Create"
 msgstr "Создать"
 
@@ -251,31 +251,35 @@ msgstr "Изменение задачи"
 msgid "Task updated"
 msgstr "Задача успешно изменена"
 
-#: task_manager/views.py:201
+#: task_manager/views.py:200
+msgid "Successfull task deleteion"
+msgstr "Задача успешно удалена"
+
+#: task_manager/views.py:202
 msgid "Delete task"
 msgstr "Удаление задачи"
 
-#: task_manager/views.py:210
+#: task_manager/views.py:211
 msgid "Only author can delete task"
 msgstr "Задачу может удалить только её автор"
 
-#: task_manager/views.py:238
+#: task_manager/views.py:239
 msgid "Label created successfuly"
 msgstr "Метка успешно создана"
 
-#: task_manager/views.py:248
+#: task_manager/views.py:249
 msgid "Update label"
 msgstr "Изменение метки"
 
-#: task_manager/views.py:251
+#: task_manager/views.py:252
 msgid "Label updated successfuly"
 msgstr "Метка успешно изменена"
 
-#: task_manager/views.py:260
+#: task_manager/views.py:261
 msgid "Delete label"
 msgstr "Удаление метки"
 
-#: task_manager/views.py:262
+#: task_manager/views.py:263
 msgid "Label deleted successfuly"
 msgstr "Метка успешно удалена"
 
