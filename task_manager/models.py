@@ -34,7 +34,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('Created at'))
     executor = models.ForeignKey(MyUser, related_name='executor', on_delete=models.PROTECT, verbose_name=_('Executor'))
     author = models.ForeignKey(MyUser, related_name='author', on_delete=models.PROTECT, verbose_name=_('Author'))
-    status = models.ForeignKey(Status, null=True, on_delete=models.SET_NULL, verbose_name=_('Status'))
+    status = models.ForeignKey(Status, models.PROTECT, verbose_name=_('Status'))
     labels = models.ManyToManyField(Labels, through='LabelToTask', verbose_name=_('Labels'))
 
     def __str__(self):

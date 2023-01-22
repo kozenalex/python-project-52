@@ -131,7 +131,7 @@ class StatusUpdateView(StatusView, UpdateView):
     success_url = reverse_lazy('statuses_list')
 
 
-class StatusDeleteView(StatusView, DeleteView):
+class StatusDeleteView(DelProtectionMixin, StatusView, DeleteView):
 
     template_name = 'confirm_delete.html'
     extra_context = {
@@ -199,7 +199,7 @@ class TaskDeleteView(UserPassesTestMixin, DeleteView):
         return self.request.user.id == author.id
 
     def handle_no_permission(self):
-        messages.warning(self.request, _('You have no permissions'))
+        messages.warning(self.request, _('Only author can delete task'))
         return redirect(reverse_lazy('tasks_list'))
 
 

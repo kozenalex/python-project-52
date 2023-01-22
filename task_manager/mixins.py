@@ -4,6 +4,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from task_manager.models import Status, Labels
 
 
 class MyUserPermissionMixin(UserPassesTestMixin):
@@ -30,8 +31,8 @@ class DelProtectionMixin():
         try:
             self.object.delete()
         except ProtectedError:
-            messages.error(
-                self.request,
-                _('You can not delete this record')
-            )
+            if isinstance(self.object, Labels):
+                messages.error(self.request, _('You can not delete Label which is used'))
+            if isinstance(self.object, Status):
+                messages.error(self.request, _('You can not delete Status which is used'))
         return redirect(self.success_url)

@@ -33,7 +33,7 @@ class TestMyUser(TestCase):
             follow=True
         )
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'create.html')
+        self.assertTemplateUsed(response, 'edit.html')
 
     def test_user_update(self):
         self.c.post(
