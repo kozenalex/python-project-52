@@ -237,7 +237,7 @@ msgstr "Удаление статуса"
 
 #: task_manager/views.py:148
 msgid "Status deleted"
-msgstr "Статус успешно удален"
+msgstr "Статус успешно удалён"
 
 #: task_manager/views.py:170
 msgid "Task created"
