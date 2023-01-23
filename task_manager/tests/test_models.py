@@ -26,3 +26,16 @@ class TestModels(TestCase):
 
         verbose = self.status._meta.get_field('name').verbose_name
         self.assertEqual(verbose, 'Имя')
+
+    def test_verbose_task(self):
+
+        verbose_name = self.task._meta.get_field('name').verbose_name
+        verbose_status = self.task._meta.get_field('status').verbose_name
+        verbose_author = self.task._meta.get_field('author').verbose_name
+        verbose_extr = self.task._meta.get_field('executor').verbose_name
+        verbose_labels = self.task._meta.get_field('labels').verbose_name
+        self.assertEqual(verbose_name, 'Имя')
+        self.assertEqual(verbose_author, 'Автор')
+        self.assertEqual(verbose_extr, 'Исполнитель')
+        self.assertEqual(verbose_labels, 'Метки')
+        self.assertEqual(verbose_status, 'Статус')
