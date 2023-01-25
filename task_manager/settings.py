@@ -30,7 +30,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'workaround')
 ROLLBAR_TOKEN = os.getenv('ROLLBAR_TOKEN', None)
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
@@ -49,10 +49,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
-    'task_manager',
     'bootstrap4',
     'django_filters',
-    'django_nose'
+    'django_nose',
+    'task_manager',
+    'users'
 ]
 
 MIDDLEWARE = [

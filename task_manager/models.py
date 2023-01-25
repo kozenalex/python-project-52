@@ -1,12 +1,6 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils.translation import gettext as _
-
-
-class MyUser(User):
-
-    def __str__(self):
-        return self.get_full_name()
+from users.models import MyUser
 
 
 class Status(models.Model):
