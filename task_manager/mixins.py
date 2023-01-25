@@ -4,7 +4,8 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-from task_manager.models import Status, Labels
+from statuses.models import Status
+from labels.models import Labels
 
 
 class MyUserPermissionMixin(UserPassesTestMixin):

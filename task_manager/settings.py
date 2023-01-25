@@ -53,7 +53,10 @@ INSTALLED_APPS = [
     'django_filters',
     'django_nose',
     'task_manager',
-    'users'
+    'users',
+    'statuses',
+    'labels',
+    'task'
 ]
 
 MIDDLEWARE = [
@@ -147,7 +150,7 @@ CSRF_TRUSTED_ORIGINS = ["https://python-project-52-production-ba0b.up.railway.ap
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 NOSE_ARGS = [
     '--with-coverage',
-    '--cover-package=task_manager',
+    '--cover-package=task_manager, users, task, labels, statuses',
 ]
 
 ROLLBAR = {

@@ -1,7 +1,10 @@
 from django import forms
 from django_filters import filters, filterset
 from django.utils.translation import gettext as _
-from task_manager.models import Task, Labels, Status, MyUser
+from task.models import Task
+from statuses.models import Status
+from users.models import MyUser
+from labels.models import Labels
 
 
 class TaskFilter(filterset.FilterSet):

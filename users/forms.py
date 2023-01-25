@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from task_manager.models import MyUser
+from users.models import MyUser
 
 
 class MyUserCreationForm(UserCreationForm):

@@ -1,5 +1,8 @@
 from django.test import TestCase
-from task_manager.models import Task, Status, Labels, MyUser
+from users.models import MyUser
+from task.models import Task
+from labels.models import Labels
+from statuses.models import Status
 
 
 class TestModels(TestCase):
