@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.contrib.auth.views import PasswordChangeView
 from django.views.generic.list import ListView
 from django.contrib import messages
@@ -11,6 +11,7 @@ from django.utils.translation import gettext as _
 from task_manager.mixins import DelProtectionMixin, MyUserPermissionMixin
 from users.forms import MyUserCreationForm
 from users.models import MyUser
+
 
 class UserView(LoginRequiredMixin, SuccessMessageMixin):
 

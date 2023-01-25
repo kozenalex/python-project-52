@@ -16,4 +16,4 @@ run:
 test:
 		@$(MANAGE) test --with-coverage --cover-xml
 lint:
-		flake8 task_manager
+		flake8 task_manager users
