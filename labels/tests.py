@@ -42,6 +42,16 @@ class TestLabels(TestCase):
         self.assertRedirects(response, reverse('labels_list'))
         self.assertTemplateUsed(response, 'labels.html')
 
+    def test_labels_list(self):
+        Labels.objects.create(name='test3')
+        response = self.c.get(
+            reverse('labels_list')
+        )
+        self.assertTemplateUsed(response, 'labels.html')
+        self.assertEqual(response.status_code, 200)
+        for label in Labels.objects.all():
+            self.assertContains(response, label.name)
+
     def test_label_delete_protect(self):
         task = Task.objects.create(
             name='test',

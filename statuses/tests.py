@@ -38,6 +38,16 @@ class TestStatus(TestCase):
         self.assertRedirects(response, reverse('statuses_list'))
         self.assertTemplateUsed(response, 'statuses.html')
 
+    def test_status_list(self):
+        Status.objects.create(name='test3')
+        response = self.c.get(
+            reverse('statuses_list')
+        )
+        self.assertTemplateUsed(response, 'statuses.html')
+        self.assertEqual(response.status_code, 200)
+        for s in Status.objects.all():
+            self.assertContains(response, s.name)
+
     def test_status_delete(self):
         response = self.c.post(
             reverse('status_delete', kwargs={'pk': 1}),

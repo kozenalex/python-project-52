@@ -89,6 +89,31 @@ class TestTask(TestCase):
         self.assertNotContains(response, 'test1')
         self.assertTemplateUsed(response, 'tasks.html')
 
+    def test_task_delete_protect(self):
+        new_author = MyUser.objects.create_user(
+            username='user2',
+            password='123'
+        )
+        protected_task = Task.objects.create(
+            name='test4',
+            description='test4',
+            status=self.status,
+            executor=new_author,
+            author=new_author
+        )
+        response = self.c.post(
+            reverse('task_delete', kwargs={
+                'pk': protected_task.id
+            }),
+            follow=True
+        )
+        self.assertAlmostEqual(response.status_code, 200)
+        self.assertRedirects(response, reverse('tasks_list'))
+        self.assertEqual(
+            protected_task,
+            Task.objects.get(id=protected_task.id)
+        )
+
     def test_task_delete(self):
         response = self.c.post(
             reverse('task_delete', kwargs={'pk': 1}),
@@ -97,3 +122,4 @@ class TestTask(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertRedirects(response, reverse('tasks_list'))
         self.assertTemplateUsed(response, 'tasks.html')
+        self.assertRaises(Task.DoesNotExist, Task.objects.get, id=1)

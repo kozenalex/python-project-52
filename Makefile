@@ -1,7 +1,7 @@
 MANAGE := poetry run python3 manage.py
 .PHONY: shell
 shell:
-		@$(MANAGE) shell_plus --ipython
+		@$(MANAGE) shell_plus
 .PHONY: migrate
 migrate:
 		@$(MANAGE) makemigrations task_manager
